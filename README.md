@@ -1,9 +1,19 @@
 YOLO Mod
-=========
+========
 
 Small CoD4 MP modification about exploding props vs. soldiers.
 
 Have fun with that code =)
+
+
+
+Credits
+=======
+* BraXi
+* iMtroll - for the "yololo" recording
+* Viking Kampfsau - flashlight model and animation
+
+
 
 Requirements
 ============
