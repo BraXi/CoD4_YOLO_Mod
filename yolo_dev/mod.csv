@@ -1,0 +1,50 @@
+
+// scripts
+rawfile,maps/mp/gametypes/_callbacksetup.gsc
+rawfile,maps/mp/gametypes/_gametypes.txt
+rawfile,maps/mp/gametypes/_persistence.gsc
+rawfile,maps/mp/gametypes/_hud_util.gsc
+rawfile,maps/mp/gametypes/yolo.gsc
+rawfile,maps/mp/gametypes/yolo.txt
+
+// menus
+menufile,ui_mp/scriptmenus/scoreboard.menu
+menufile,ui_mp/scriptmenus/mod_about.menu
+menufile,ui_mp/scriptmenus/mod_main.menu
+menufile,ui_mp/scriptmenus/mod_stats.menu
+
+// effects
+fx,yolo/embers
+fx,yolo/explosion
+fx,yolo/flashlight
+fx,yolo/flashlight2
+fx,misc/hunted_spotlight_model
+fx,yolo/flashlight_view
+
+// weapons
+weapon,mp/brick_mp
+weapon,mp/flashlight_mp
+
+// models
+xmodel,com_barrel_benzin
+xmodel,body_mp_usmc_cqb
+xmodel,fake
+xmodel,com_flashlight_on
+
+// sounds
+rawfile,sound/yolo/yolo_imtroll.wav
+sound,braxi,,all_mp
+
+
+
+
+//com_cellphone_on_anim
+//com_computer_monitor
+//com_computer_keyboard
+//com_debris_paper
+//com_office_book_red_standing
+//com_fire_extinguisher
+//com_hatchet
+//com_flashlight_on
+//com_barrel_benzin
+//com_potted_plant01

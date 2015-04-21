@@ -1,0 +1,334 @@
+#include "ui/menudef.h"
+
+#include "ui_mp/menustyle.inc"
+
+
+{
+	menuDef 
+	{
+		name			mod_main
+		fullScreen		0				
+		rect			0 0 640 480				// Size and position of the menu
+		focusColor		COLOR_FOCUSED			// Menu focus color for text and items
+		//soundloop		"mod_mainmenu"
+		onOpen
+		{ 
+			setfocus play;
+		}
+		onClose
+		{
+//			close main_lockout;
+//			open main_text;
+		}
+		onESC 
+		{
+			close self;
+		}
+		#include "ui/blurredbg.inc"
+		// gradient_top
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_top"
+			visible			1
+			decoration
+		}
+		// gradient_bottom
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 405 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_bottom"
+			visible			1
+			decoration
+		}
+		/*itemDef	{
+			visible			1
+			rect			-310 -120 512 128 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			origin			0 0
+			forecolor		1 1 1 1
+			style			WINDOW_STYLE_SHADER
+			background		"logo_cod2"
+			decoration
+			visible			1
+		}*/
+
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN 0
+
+			forecolor		0.8 0.8 0.8 1
+			background		"levelshot_aftermath"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "YOLO: The Mod" )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			forecolor		1 0 0 1
+			exp forecolor	A	( 1 - (cos(milliseconds()/1000) * 0.6) )
+
+			exp				rect X(320+(cos(milliseconds()/800) * 40))
+			exp				rect Y(100) //+(cos(milliseconds()/400) * 32))
+			textaligny		150
+			textscale		1
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+			
+		#undef FOG_SCROLL_TIME
+		#define FOG_SCROLL_TIME 40000
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-107 0 1708 480
+			exp				rect X((-107) - ((float(milliseconds() % FOG_SCROLL_TIME) / FOG_SCROLL_TIME) * (854)))
+			background		"animbg_fogscrollthin"
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+
+
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 45 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/800) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			play
+			text			"@MPUI_AUTOASSIGN"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 45 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/800) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				scriptMenuResponse "autoassign";
+				close self;
+			}
+		}
+
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 70 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/750) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			spectate
+			text			"@MPUI_SPECTATOR"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 70 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/750) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				scriptMenuResponse "spectator";
+				close self;
+			}
+		}
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 100 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/700) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			options
+			text			"@MENU_CONTROLS"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 100 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/700) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				close self; 
+				open main_controls;
+			}
+		}
+
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 125 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/740) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			options
+			text			"@MENU_OPTIONS"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 125 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/740) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				close self; 
+				open main_options; 
+				execnow "set ui_allow_graphic_change 1";
+			}
+		}
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 150 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/770) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			about
+			text			"About the Mod"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 150 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/770) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				close self;
+				open mod_about;
+			}
+		}
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 180 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/720) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			leave
+			text			"@MPUI_LEAVE_GAME"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 180 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/720) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.3
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				open popup_endgame;
+			}
+		}
+
+	}
+}
+
+
+	

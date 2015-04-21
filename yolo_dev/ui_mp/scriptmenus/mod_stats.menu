@@ -1,0 +1,248 @@
+#include "ui/menudef.h"
+#include "ui_mp/menustyle.inc"
+
+{
+	menuDef 
+	{
+		name			mod_stats
+		fullScreen		0				
+		rect			0 0 640 480
+		focusColor		COLOR_FOCUSED
+		onOpen
+		{ 
+		}
+		onClose
+		{
+		}
+		onESC 
+		{
+			close self;
+		}
+		#include "ui/blurredbg.inc"
+
+
+		// gradient_top
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_top"
+			visible			1
+			decoration
+		}
+		// gradient_bottom
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 405 854 75 HORIZONTAL_ALIGN_FULLSCREEN 0
+			background		"gradient_bottom"
+			visible			1
+			decoration
+		}
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			0 0 640 480 HORIZONTAL_ALIGN_FULLSCREEN 0
+
+			forecolor		0.8 0.8 0.8 1
+			background		"levelshot_aftermath"
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "Suicide Survival - Your Stats" )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			forecolor		1 0 0 1
+			exp forecolor	A	( 1 - (cos(milliseconds()/1000) * 0.6) )
+
+			exp				rect X(320+(cos(milliseconds()/800) * 40))
+			exp				rect Y(100) //+(cos(milliseconds()/400) * 32))
+			textaligny		150
+			textscale		0.8
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+			
+		#undef FOG_SCROLL_TIME
+		#define FOG_SCROLL_TIME 40000
+
+		itemDef
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-107 0 1708 480
+			exp				rect X((-107) - ((float(milliseconds() % FOG_SCROLL_TIME) / FOG_SCROLL_TIME) * (854)))
+			background		"animbg_fogscrollthin"
+			forecolor		0 0 0 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "This is an alpha version so don't expect everything to be implemented, hmkay?"  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/800) * 20))
+			exp				rect Y(130)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+
+		/*itemDef
+		{
+			exp				text( "Score Total: ^360" + dvarString( "stat_score" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/800) * 20))
+			exp				rect Y(130)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "Kills Total: ^36" + dvarString( "stat_kills" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/750) * 20))
+			exp				rect Y(150)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "Killed Soldiers: ^35" + dvarString( "stat_ksoldiers" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/800) * 20))
+			exp				rect Y(170)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}	
+
+		itemDef
+		{
+			exp				text( "Killed Suiciders: ^31" + dvarString( "stat_ksuiciders" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/750) * 20))
+			exp				rect Y(190)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "Highest Killstreak: ^35" + dvarString( "stat_killstreak" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/800) * 20))
+			exp				rect Y(210)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			exp				text( "Deaths Total: ^31" + dvarString( "stat_deaths" )  )
+			style			WINDOW_STYLE_EMPTY
+			rect			0 0 1 1
+
+			exp				rect X(320+(cos(milliseconds()/750) * 20))
+			exp				rect Y(230)
+			textaligny		150
+			textscale		0.3
+			textstyle		ITEM_TEXTSTYLE_NORMAL
+			textfont		UI_FONT_OBJECTIVE
+			textalign		ITEM_ALIGN_CENTER
+			visible			1
+			decoration
+		}
+
+		itemDef	
+		{
+			style			WINDOW_STYLE_SHADER
+			rect			-60 180 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/720) * 10))
+
+			forecolor		1 1 1 1
+			background		"popmenu_bg"
+			visible			1
+			decoration
+		}*/
+
+		itemDef
+		{
+			name			leave
+			text			"Press ^2ESC ^7to return to Scoreboard"
+			type			ITEM_TYPE_BUTTON
+			rect			-60 180 120 20 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_CENTER
+			exp				rect X(-60+(cos(milliseconds()/720) * 10))
+			forecolor		1 1 1 0.85
+			textalign		ITEM_ALIGN_MIDDLE_CENTER
+			visible			1 
+			textfont		6
+			textscale		0.2
+
+			onFocus 
+			{
+				play "mouse_over";
+			}
+			action 
+			{
+				play "mouse_click";
+				close self;
+			}
+		}
+
+	}
+}
+
+
+	
