@@ -2,9 +2,8 @@ YOLO Mod
 ========
 
 Small CoD4 MP modification about exploding props vs. soldiers.
-
 Have fun with that code =)
-
+Extract yolo_dev to your <cod4>/mods directory and run makeMod.bat, press D (you're copying directories) if asked.
 
 
 Credits
